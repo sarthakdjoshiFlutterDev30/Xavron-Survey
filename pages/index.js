@@ -82,13 +82,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>My Xaveron - Student Interest Survey</title>
+        <title>My Xavron - Student Interest Survey</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="icon" href="./Logo.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="icon" type="image/png" href="/Logo.png" />
       </Head>
 
       <div className="container">
@@ -96,7 +92,7 @@ export default function Home() {
           <div className="logo-icon">
             <i className="fa-solid fa-graduation-cap"></i>
           </div>
-          <h1>My Xaveron Survey</h1>
+          <h1>My Xavron Survey</h1>
           <p className="subtitle">Help us build the ultimate app for A.M. Patel Institute! 🚀</p>
         </div>
 
