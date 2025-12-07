@@ -56,10 +56,11 @@ export default function ChartPage() {
       return map;
     };
 
-    const featureCounts = countBy(rows, 'top_feature');
-    const foodCounts = countBy(rows, 'food_interest');
+    const roleCounts = countBy(rows, 'top_feature');
+    const projectCounts = countBy(rows, 'food_interest');
     const attendanceCounts = countBy(rows, 'attendance_time');
     const deptCounts = countBy(rows, 'department');
+    const semesterCounts = countBy(rows, 'semester');
 
 
     const makeChart = (id, type, labels, data, options = {}) => {
@@ -97,10 +98,11 @@ export default function ChartPage() {
     };
 
     // Build charts
-    makeChart('chart-feature', 'bar', Object.keys(featureCounts), Object.values(featureCounts), { backgroundColor: 'rgba(59,130,246,0.7)' });
-    makeChart('chart-food', 'pie', Object.keys(foodCounts), Object.values(foodCounts), { backgroundColor: ['#10B981','#F59E0B','#EF4444'] });
+    makeChart('chart-role', 'bar', Object.keys(roleCounts), Object.values(roleCounts), { backgroundColor: 'rgba(59,130,246,0.7)' });
+    makeChart('chart-project', 'pie', Object.keys(projectCounts), Object.values(projectCounts), { backgroundColor: ['#10B981','#F59E0B','#EF4444'] });
     makeChart('chart-attendance', 'doughnut', Object.keys(attendanceCounts), Object.values(attendanceCounts), { backgroundColor: ['#60A5FA','#818CF8','#A78BFA'] });
     makeChart('chart-dept', 'horizontalBar' in Chart.prototype ? 'bar' : 'bar', Object.keys(deptCounts), Object.values(deptCounts), { backgroundColor: 'rgba(99,102,241,0.7)' });
+    makeChart('chart-semester', 'bar', Object.keys(semesterCounts), Object.values(semesterCounts), { backgroundColor: 'rgba(236,72,153,0.7)' });
 
     return () => {
       chartInstancesRef.current.forEach(inst => inst && inst.destroy && inst.destroy());
@@ -111,7 +113,7 @@ export default function ChartPage() {
   return (
     <>
       <Head>
-        <title>Charts — My Xampus</title>
+        <title>Charts — My Xavron</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </Head>
@@ -132,28 +134,33 @@ export default function ChartPage() {
               {(!rows || rows.length === 0) ? (
                 <>
                   <div className="chart-card">
-                    <h3>Top Feature (bar)</h3>
+                    <h3>Role (bar)</h3>
                     <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>No records found</div>
                   </div>
                   <div className="chart-card">
-                    <h3>Food Interest (pie)</h3>
+                    <h3>Project Contribution</h3>
                     <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>No records found</div>
                   </div>
                   <div className="chart-card">
-                    <h3>Attendance Time (doughnut)</h3>
+                    <h3>Attendance Time </h3>
                     <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>No records found</div>
                   </div>
                   <div className="chart-card">
-                    <h3>Department (bar)</h3>
+                    <h3>Department </h3>
+                    <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>No records found</div>
+                  </div>
+                  <div className="chart-card">
+                    <h3>Semester </h3>
                     <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)' }}>No records found</div>
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="chart-card"><h3>Top Feature (bar)</h3><canvas id="chart-feature" className="chart-canvas"></canvas></div>
-                  <div className="chart-card"><h3>Food Interest (pie)</h3><canvas id="chart-food" className="chart-canvas"></canvas></div>
-                  <div className="chart-card"><h3>Attendance Time (doughnut)</h3><canvas id="chart-attendance" className="chart-canvas"></canvas></div>
-                  <div className="chart-card"><h3>Department (bar)</h3><canvas id="chart-dept" className="chart-canvas"></canvas></div>
+                  <div className="chart-card"><h3>Role </h3><canvas id="chart-role" className="chart-canvas"></canvas></div>
+                  <div className="chart-card"><h3>Project Contribution </h3><canvas id="chart-project" className="chart-canvas"></canvas></div>
+                  <div className="chart-card"><h3>Attendance Time </h3><canvas id="chart-attendance" className="chart-canvas"></canvas></div>
+                  <div className="chart-card"><h3>Department </h3><canvas id="chart-dept" className="chart-canvas"></canvas></div>
+                  <div className="chart-card"><h3>Semester </h3><canvas id="chart-semester" className="chart-canvas"></canvas></div>
                 </>
               )}
             </div>

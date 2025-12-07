@@ -22,6 +22,7 @@ export default function Home() {
         return ['1', '2', '3', '4'];
       case 'bca':
         return ['1', '2', '3', '4', '5', '6'];
+      
       case 'btech':
         return ['1', '2', '3', '4', '5', '6', '7', '8'];
       case 'mtech':
@@ -81,10 +82,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>My Xampus - Student Interest Survey</title>
+        <title>My Xaveron - Student Interest Survey</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="icon" href="./Logo.png" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       </Head>
@@ -94,7 +96,7 @@ export default function Home() {
           <div className="logo-icon">
             <i className="fa-solid fa-graduation-cap"></i>
           </div>
-          <h1>My Xampus Survey</h1>
+          <h1>My Xaveron Survey</h1>
           <p className="subtitle">Help us build the ultimate app for A.M. Patel Institute! 🚀</p>
         </div>
 
@@ -105,15 +107,12 @@ export default function Home() {
           </div>
 
           <div className="form-group">
-            <label><i className="fa-solid fa-layer-group"></i> Department & Semester <span className="required-indicator">*</span></label>
+            <label><i className="fa-solid fa-school"></i> Department & Semester <span className="required-indicator">*</span></label>
             <div className="field-row">
               <select name="department" value={form.department} onChange={handleChange} required>
                 <option value="">Select Dept</option>
                 <option value="MCA">MCA</option>
                 <option value="BCA">BCA</option>
-                <option value="BTech">B.Tech</option>
-                <option value="MTech">M.Tech</option>
-                <option value="Other">Other</option>
               </select>
               <select name="semester" value={form.semester} onChange={handleChange} required disabled={semesters.length === 0} aria-disabled={semesters.length === 0}>
                 <option value="">Sem</option>
@@ -126,7 +125,8 @@ export default function Home() {
           </div>
 
           <div className="form-group">
-            <label><i className="fa-regular fa-clock"></i> How much lecture time is Consume in manual attendance?<span className="required-indicator">*</span></label>
+            <label><i className="fa-regular fa-clock"></i>
+            Approximately how much time is spent on manual attendance during lectures?      <span className="required-indicator">*</span></label>
             <div className="radio-group" role="radiogroup" aria-label="How much lecture time is wasted in manual attendance">
               <div className="radio-card">
                 <input type="radio" id="time_low" name="attendance_time" value="< 5 mins" checked={form.attendance_time === '< 5 mins'} onChange={handleChange} required />
@@ -140,7 +140,7 @@ export default function Home() {
           </div>
 
           <div className="form-group">
-            <label><i className="fa-solid fa-burger"></i> Would you use an app to pre-order food and skip the queue? <span className="required-indicator">*</span></label>
+            <label><i className="fa-solid fa-lightbulb    "></i> Would you be willing to contribute your final semester project to the institute?   <span className="required-indicator">*</span></label>
             <div className="radio-group" role="radiogroup" aria-label="Would you use an app to pre-order food and skip the queue">
               <div className="radio-card">
                 <input type="radio" id="food_yes" name="food_interest" value="Yes" checked={form.food_interest === 'Yes'} onChange={handleChange} required />
@@ -154,18 +154,13 @@ export default function Home() {
           </div>
 
           <div className="form-group">
-            <label><i className="fa-solid fa-star"></i> Which feature do you want the most? <span className="required-indicator">*</span></label>
+            <label><i className="fa-solid fa-user-group"></i> Select Role <span className="required-indicator">*</span></label>
             <select name="top_feature" value={form.top_feature} onChange={handleChange} required>
-              <option value="">Select best feature</option>
-              <option value="Smart Attendance">QR Attendance</option>
-              <option value="Food Ordering">Canteen Pre-ordering</option>
-              <option value="Project Vault">Past Project References</option>
-            </select>
-          </div>
+              <option value="">Select Role</option>
+              <option value="Student">Student</option>
+              <option value="Faculty">Faculty</option>
 
-          <div className="form-group">
-            <label htmlFor="suggestions"><i className="fa-regular fa-lightbulb"></i> Any other feature you want?</label>
-            <textarea name="suggestions" id="suggestions" rows="3" value={form.suggestions} onChange={handleChange} placeholder="E.g., Bus tracking, Exam results..."></textarea>
+              </select>
           </div>
 
           {error && <p style={{ color: '#ffcccb', marginBottom: 10 }}>{error}</p>}
@@ -185,7 +180,7 @@ export default function Home() {
             </svg>
           </div>
           <h2>Thank You!</h2>
-          <p style={{ color: 'var(--text-muted)', margin: '10px 0 20px' }}>Your feedback helps us make <strong>My Xampus</strong> better.</p>
+          <p style={{ color: 'var(--text-muted)', margin: '10px 0 20px' }}>Your feedback helps us make <strong>Xavron</strong> better.</p>
           <button className="submit-btn" onClick={() => setSuccess(false)}>Close</button>
         </div>
       </div>

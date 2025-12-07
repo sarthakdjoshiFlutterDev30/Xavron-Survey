@@ -151,9 +151,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, .radio-card i
 
 /* Table styles for read-only listing */
 .table-wrap { overflow-x: auto; }
-.responses-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
-.responses-table thead th { text-align: left; padding: 10px 12px; background: rgba(255,255,255,0.03); color: var(--text-main); font-weight: 600; position: sticky; top: 0; }
-.responses-table tbody td { padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.03); color: var(--text-main); }
+.responses-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; border: 1px solid var(--border); }
+.responses-table thead th { text-align: left; padding: 10px 12px; background: rgba(255,255,255,0.03); color: var(--text-main); font-weight: 600; position: sticky; top: 0; border: 1px solid var(--border); }
+.responses-table tbody td { padding: 10px 12px; border: 1px solid var(--border); color: var(--text-main); }
 .responses-table tr:nth-child(even) td { background: rgba(255,255,255,0.01); }
 .responses-table td { vertical-align: middle; }
 .responses-table th:first-child, .responses-table td:first-child { width: 170px; }
@@ -223,7 +223,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, .radio-card i
 .table-card .pair { display: flex; gap: 8px; }
 .table-card .label { width: 38%; color: var(--text-muted); font-weight: 700; font-size: 13px; }
 .table-card .value { flex: 1; color: var(--text-main); font-size: 14px; word-break: break-word; }
-.table-card .actions { display: flex; gap: 8px; margin-top: 8px; justify-content: flex-end; }
+.table-card .actions { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; align-items: stretch; }
 
 /* On narrow screens hide the wide table and show stacked cards */
 @media (max-width: 720px) {
@@ -231,7 +231,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, .radio-card i
     .table-cards { display: flex; flex-direction: column; }
     .table-wrap { overflow: visible; }
     .download-btn { width: 100%; }
-    .action-btn, .danger-btn { padding: 10px 12px; flex: 1; }
+    .action-btn, .danger-btn { padding: 10px 12px; width: 100%; }
 }
 
 /* On larger screens hide the card view */

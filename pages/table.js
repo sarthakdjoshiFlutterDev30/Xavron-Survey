@@ -31,7 +31,7 @@ export default function TablePage() {
 
   function downloadCSV() {
     if (!rows || rows.length === 0) return;
-    const headers = ['Time','Name','Department','Semester','Attendance','Food','Top Feature','Suggestions'];
+    const headers = ['Time','Name','Department','Semester','Attendance Time','Project Contribution','Role'];
     const csvRows = [headers.join(',')];
     rows.forEach(r => {
       const cols = [
@@ -42,8 +42,8 @@ export default function TablePage() {
         (r.attendance_time || ''),
         (r.food_interest || ''),
         (r.top_feature || ''),
-        (r.suggestions || '')
-      ];
+    
+    ];
       const escaped = cols.map(c => {
         const s = String(c).replace(/"/g, '""');
         if (s.search(/[,"\n]/) >= 0) return `"${s}"`;
@@ -133,10 +133,9 @@ export default function TablePage() {
                       <th>Name</th>
                       <th>Dept</th>
                       <th>Sem</th>
-                      <th>Attendance</th>
-                      <th>Food</th>
-                      <th>Top Feature</th>
-                      <th>Suggestions</th>
+                      <th>Attendance Time</th>
+                      <th>Project Contribution</th>
+                      <th>Role</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -153,8 +152,7 @@ export default function TablePage() {
                         <td>{r.attendance_time}</td>
                         <td>{r.food_interest}</td>
                         <td>{r.top_feature}</td>
-                        <td style={{ maxWidth: 300, overflow: 'hidden', textOverflow: 'ellipsis' }}>{r.suggestions || '-'}</td>
-                        <td style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
+                        <td style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center' }}>
                           <button
                             className="action-btn"
                             onClick={() => handleResetIp(r.id)}
@@ -187,10 +185,9 @@ export default function TablePage() {
                     <div className="pair"><div className="label">Name</div><div className="value">{r.fullname || '-'}</div></div>
                     <div className="pair"><div className="label">Dept</div><div className="value">{r.department}</div></div>
                     <div className="pair"><div className="label">Sem</div><div className="value">{r.semester}</div></div>
-                    <div className="pair"><div className="label">Attendance</div><div className="value">{r.attendance_time}</div></div>
-                    <div className="pair"><div className="label">Food</div><div className="value">{r.food_interest}</div></div>
-                    <div className="pair"><div className="label">Feature</div><div className="value">{r.top_feature}</div></div>
-                    <div className="pair"><div className="label">Suggestions</div><div className="value">{r.suggestions || '-'}</div></div>
+                    <div className="pair"><div className="label">Attendance Time</div><div className="value">{r.attendance_time}</div></div>
+                    <div className="pair"><div className="label">Project Contribution</div><div className="value">{r.food_interest}</div></div>
+                    <div className="pair"><div className="label">Role</div><div className="value">{r.top_feature}</div></div>
                     <div className="actions">
                       <button
                         className="action-btn"
